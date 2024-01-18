@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div id="header">
+        <span class="logo">PRZYCHODNIA</span>
+        {% if request.user.is_authenticated %}
+        <ul class="menu">
+          <li {% if section == "dashboard" %}class="selected"{% endif %}>
+            <a href="{% url "administracja:dashboard" %}">Panel główny</a>
+          </li>
+          
+          <li {% if section == "lekarze" %}class="selected"{% endif %}>
+            <a href="lista_lekarzy">Lekarze</a>
+          </li>
+        </ul>
+      {% endif %}
+        
+      <span class="user">
+        {% if request.user.is_authenticated %}
+          Witaj, {{ request.user.first_name }}!
+          <form method="post" action="{% url 'administracja:logout' %}">
+            {% csrf_token %}
+            <button type="submit">logout</button>
+          </form>
+          
+        {% else %}
+          <a href="{% url "administracja:login" %}">Zaloguj</a>
+        {% endif %}
+      </span>
+    </div>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+
+</html>
+

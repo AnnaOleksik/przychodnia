@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+<link rel="stylesheet" href="button_style.css">
+
+{% block title %} Dodaj lekarza{% endblock %}
+{% block content %}
+<h2>Dodaj lekarza</h2>
+
+
+<form action="." method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <label1>Imię</label1> <input type="text" name="imię" size="30" maxlength"20" />
+    <label2>Nazwisko</label2> <input type="text" name="nazwisko" size="30" maxlength"20" />
+    <label3>Numer</label3> <input type="text" name="numer" size="10" maxlength"10" />
+    <br>
+    <a href="index.html" class="button">Dodaj</a>
+</form>
+{% endblock %}
+
+

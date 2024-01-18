@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+    body {
+        background-color:lightgray;
+    }
+    h1 {color:navy;
+    margin-left: 20 px;}
+    .button {
+      background-color: #04AA6D;
+      border: none;
+      color: white;
+      padding: 15px 40px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 4px 2px;
+      cursor: pointer;
+      width: 120px;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>LISTA LEKARZY</h1>
+{% for lekarz in lek %}
+<h2>{{ lekarz.imie }} {{ lekarz.nazwisko }} {{ lekarz.specjalizacja}}</h2>   
+   
+{% endfor %}
+</body>
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Produkty
+{% endblock %}
+
+{% block content %}
+  <div id="sidebar">
+
+  </div>
+  <div id="main" class="product-list">
+    <h1>{% if category %}{{ category.name }}{% else %}Specjalizacje{% endif %}</h1>
+    {% for product in products %}
+    <h2>{{ product.imie }} {{ product.nazwisko }} - {{ product.name }} {% if user.is_authenticated %}{{ product.cena }} zł{% endif %} </h2> 
+      <div class="item">
+        <a href="{{ product.get_absolute_url }}">
+          <img src="{% if product.image %}{{ product.image.url }}{% endif %}">
+        </a>
+        <a href="{{ product.get_absolute_url }}"></a><br>
+       
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

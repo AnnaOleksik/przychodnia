@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Cennik{% endblock %}
+
+{% block content %}
+  <div id="sidebar">
+    <h3>Ceny</h3>
+    <ul>
+      
+      {% for c in cenniki %}
+        <li>
+          {{ c.imie }} {{ c.nazwisko }} {{ c.specjalizacja }} {{ c.koszt }} {{ c.obrazek }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div id="main" class="cennik">
+    <h1>{% if cennik %}{{ <cennik class="imie"></cennik> }}{% else %}Ceny{% endif %}</h1>
+    {% for product in products %}
+      <div class="item">
+        <a href="{{ cennik.get_absolute_url }}">
+          <img src="{% if cennik.image %}{{ cennik.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+        </a>
+        <a href="{{ cennik.get_absolute_url }}">{{ cennik.specjalizacja}}</a><br>
+        {{ cennik.koszt}} zł
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
